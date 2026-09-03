@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include<cmath>
+
 namespace s4sar 
 {
   /**

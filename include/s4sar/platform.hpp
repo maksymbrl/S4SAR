@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include<s4sar/geometry.hpp>
+
 namespace s4sar 
 {
 
