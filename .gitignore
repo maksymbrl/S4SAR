@@ -1,0 +1,145 @@
+docs 
+*.zip
+data 
+output 
+test.xml
+# ------------------------------
+# Nix
+# ------------------------------
+
+# nix build result symlinks
+result
+result-*
+
+# direnv / nix-direnv
+.direnv/
+.envrc.local
+
+# Optional local Nix files
+flake.local.nix
+
+
+# ------------------------------
+# Python
+# ------------------------------
+
+# Bytecode and interpreter caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Native extensions
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging and build output
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Static-analysis and lint caches
+.mypy_cache/
+.ruff_cache/
+.pyright/
+.pytype/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+
+# ------------------------------
+# Editors and operating systems
+# ------------------------------
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+.DS_Store
+Thumbs.db
+
+# CMake build directories
+
+build/
+cmake-build-*/
+
+# CMake generated files
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+
+# Ninja generated files
+
+.ninja_deps
+.ninja_log
+build.ninja
+rules.ninja
+
+# Compiled objects and libraries
+
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.lib
+
+# Executables
+
+*.exe
+*.out
+
+# Debugging / profiling output
+
+*.dSYM/
+*.gcda
+*.gcno
+*.gcov
+core
+core.*
+
+# Test output
+
+Testing/
+
+# IDE / editor files
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+
+.DS_Store
+
+
