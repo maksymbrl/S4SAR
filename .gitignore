@@ -1,5 +1,6 @@
 docs 
 *.zip
+*csv
 data 
 output 
 test.xml

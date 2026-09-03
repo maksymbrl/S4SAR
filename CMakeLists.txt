@@ -20,6 +20,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(
   s4sar 
   apps/s4sar.cpp
+  src/geometry.cpp
 )
 
  target_include_directories(
