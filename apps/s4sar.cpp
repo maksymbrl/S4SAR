@@ -2,6 +2,7 @@
 
 #include<print>
 #include<cmath>
+#include<numbers>
 
 /**
  * Coordinate system:
@@ -101,7 +102,16 @@ int main()
   // Together with PRF, determines the synthetic aperture duration.
   constexpr std::size_t pulseCount = 5;
 
-  // For each sebsequent pulse p, we do:
+  // Light Speed [m/s]
+  constexpr double speedOfLight = 299'792'458.0;
+
+  // Sensor Frequency [Hz]
+  constexpr double carrierFrequency = 5.405e9;
+
+  const double wavelength = speedOfLight / carrierFrequency; 
+
+
+  // For each subsequent pulse p, we do:
   for(std::size_t p = 0; p < pulseCount; ++p)
   {
 
@@ -114,13 +124,21 @@ int main()
     const Vec3 position = platform.GetPositionAt(slowTime); 
     const double range = GetSlantRange(position, target.position);
 
+    // Two-Way Propagation Delay 
+    //
+    // [Note]: factor 2 accounts for a round-trip: radar -> target -> radar 
+    const double delay = 2.0 * range / speedOfLight; 
+
+    const double phase = -4.0 * std::numbers::pi * range / wavelength; 
+
     std::println
     (
-      "Pulse = {}, t = {:.6f}s, x = {:.3f}m, range = {:.9f}m", 
+      "Pulse = {}, t = {:.6f}s, range = {:.9f}m, delay = {:.9e}s, phase = {:.6f}rad", 
       p, 
       slowTime, 
-      position.x, 
-      range 
+      range, 
+      delay, 
+      phase
     );
   }
 
