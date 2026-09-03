@@ -4,58 +4,9 @@
 #include<cmath>
 #include<numbers>
 
-/**
- * Coordinate system:
- *   x: along-track
- *   y: cross-track
- *   z: altitude
- */
-struct Vec3
-{
-  double x; 
-  double y;
-  double z; 
-};
-
-struct PointTarget
-{
-  Vec3 position;
-  double reflectivity; 
-};
-
-struct Platform 
-{
-  Vec3 initialPosition; 
-  Vec3 velocity;
-
-  /** 
-  * Calculating the satellite's position at time t using simple kinematics
-  */
-  [[nodiscard]]
-  Vec3 GetPositionAt(double time) const 
-  {
-    return 
-    {
-      initialPosition.x + velocity.x * time, 
-      initialPosition.y + velocity.y * time, 
-      initialPosition.z + velocity.z * time, 
-    };
-  } 
-};
-
-/** 
-* Calculate Instantaneous Slant Range as simple Eucledian distance
-*/
-[[nodiscard]]
-double GetSlantRange(const Vec3& a, const Vec3& b)
-{
-  return std::hypot
-    (
-      b.x - a.x, 
-      b.y - a.y, 
-      b.z - a.z
-    ); 
-}
+#include<s4sar/geometry.hpp>
+#include<s4sar/platform.hpp>
+#include<s4sar/scene.hpp>
 
 
 int main()
@@ -64,7 +15,7 @@ int main()
 
   // Scene Setup 
 
-  const Platform platform = 
+  const s4sar::Platform platform = 
     {
       .initialPosition = 
         { 
@@ -81,7 +32,7 @@ int main()
         },
     };
 
-  const PointTarget target = 
+  const s4sar::PointTarget target = 
     {
       .position = 
         {
@@ -121,8 +72,8 @@ int main()
         static_cast<double>(pulseCount - 1) / 2.0
       ) / prf ; 
 
-    const Vec3 position = platform.GetPositionAt(slowTime); 
-    const double range = GetSlantRange(position, target.position);
+    const s4sar::Vec3 position = platform.GetPositionAt(slowTime); 
+    const double range = s4sar::GetSlantRange(position, target.position);
 
     // Two-Way Propagation Delay 
     //

@@ -22,8 +22,8 @@ add_executable(
   apps/s4sar.cpp
 )
 
-# target_include_directories(
-#   sarender 
-#   PRIVATE
-#     ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
+ target_include_directories(
+   s4sar  
+   PRIVATE
+     ${CMAKE_CURRENT_SOURCE_DIR}/include
+ )
